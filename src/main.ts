@@ -37,7 +37,55 @@ if (isAdmin) {
     console.log("isAdmin is considered false")
 }
 
+//Objekte definieren
+const x: { name: string, age: number } = {
+    name: "test",
+    age: 50
+}
+console.log(x)
 
+//Objekte definieren mit "Klasse Person"
+type Person = {
+    name: string,
+    favoriteColor: string,
+    age: number
+}
+
+const y: Person = {
+    name: "Max",
+    favoriteColor: "blue",
+}
+const z: Person = {
+    name: "Linda",
+    favoriteColor: "blue",
+    age: 31
+}
+console.log(y)
+console.log(z)
+
+//Typen definieren
+
+type Example = number | string
+const a: Example = 5.3
+const b: Example = "Hallo Welt"
+
+console.log(a)
+console.log(b)
+
+type Example2 = "Max" | "Linda"
+const c: Example2 = "Max"
+console.log(c)
+
+type Example3 = {
+    name: "Max" | "Linda"
+}
+const d: Example3 = {
+    name: "Max"
+}
+console.log(d)
+
+
+//Bonus
 function getChristmasTree(n: number): string {
     let tree: string[] = [];
 
@@ -55,7 +103,7 @@ function getChristmasTree(n: number): string {
     return tree.join("\n");
 }
 
-let tree = getChristmasTree(40);
+let tree = getChristmasTree(7);
 console.log(tree)
 
 console.log("-------Typescript Day 2--------")
@@ -74,7 +122,7 @@ console.log(newWords)
 
 // Step 3
 let otherNumbers: number[] = [2, 4, 6, 8, 10, 12]
-let sum = otherNumbers.reduce((a, b) => a + b)
+let sum = otherNumbers.reduce((sum, number) => sum + number, 0)
 console.log(sum)
 
 // Step 4
@@ -104,7 +152,30 @@ console.log(list.filter(number => number % 4 !== 0));
 
 //Sum of all numbers
 console.log("Sum of all")
-console.log(list.reduce((a, b) => a + b));
+console.log(list.reduce((sum, number) => sum + number, 0));
 
 //Prüfen, ob das original unverändert ist
 console.log(list)
+
+//Arrays
+type MixedArray = (number | string)[]
+
+const mixedArray: MixedArray = [1, 15, "Hallo Welt"]
+console.log(mixedArray)
+
+//In Typescript wird bei Operatoren && bzw. || geprüft, ob b zurückgegben wird oder a
+const a1 = true
+const b1 = "Hallo"
+
+console.log(a1 && b1)
+
+const a2 = false
+const b2 = "Hallo"
+
+console.log(a2 || b2)
+
+const a3 = "1"
+const b3 = "Hallo"
+
+console.log(a3 || b3)
+
