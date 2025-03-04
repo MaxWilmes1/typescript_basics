@@ -87,16 +87,16 @@ const list = [15, 6, 3213, 9, 0, 12, 8464, 1, 1264, 481, 186, 1031, 194];
 
 //Sort descending
 console.log("Sort descending")
-console.log(list.sort((a, b) => a - b));
+console.log([...list].sort((a, b) => b - a));
 
 //Square numbers
 console.log("Square numbers")
 console.log(list.map(number => number * number));
 
-//Remove lowest two and highest 4
+//Remove the lowest two and highest 4
 console.log("Remove 2 lowest and highest 4")
-console.log(list.sort((a, b) => a - b)
-    .slice(2, 9));
+console.log([...list].sort((a, b) => a - b)
+    .slice(2, -4));
 
 //Remove all numbers divisible by 4
 console.log("Remove all divisible by 4")
@@ -105,3 +105,6 @@ console.log(list.filter(number => number % 4 !== 0));
 //Sum of all numbers
 console.log("Sum of all")
 console.log(list.reduce((a, b) => a + b));
+
+//Prüfen, ob das original unverändert ist
+console.log(list)
