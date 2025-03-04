@@ -9,7 +9,7 @@ for (let i = 0; i < age; i++) {
 }
 console.log("--------------");
 
-if (age > 18){
+if (age > 18) {
     console.log("Older than 18")
 } else {
     console.log("Under 18")
@@ -17,28 +17,28 @@ if (age > 18){
 
 let score: number = 1;
 
-if (score){
+if (score) {
     console.log("Score is available")
 } else {
     console.log("No score available")
 }
 
 let username: string = "";
-if (username){
+if (username) {
     console.log("Username is available")
 } else {
     console.log("Username is evaluated as falsy")
 }
 
 let isAdmin: boolean = false;
-if (isAdmin){
+if (isAdmin) {
     console.log("isAdmin is considered truthy")
 } else {
     console.log("isAdmin is considered false")
 }
 
 
-function getChristmasTree(n: number): string{
+function getChristmasTree(n: number): string {
     let tree: string[] = [];
 
     for (let i = 0; i < n; i++) {
@@ -52,12 +52,33 @@ function getChristmasTree(n: number): string{
         tree.push(trunk)
     }
 
-     return tree.join("\n");
+    return tree.join("\n");
 }
 
 let tree = getChristmasTree(40);
 console.log(tree)
 
+console.log("-------Typescript Day 2--------")
+//Step 1
+let numbers: number[] = [1, 3, 5, 7, 9, 11, 13]
 
+let newNumbers = numbers.map(number => [number, number * 2])
+console.log(newNumbers)
+let newNumbersFlat = numbers.flatMap(number => [number, number * 2])
+console.log(newNumbersFlat)
 
+//Step 2
+let words: string[] = ["Hallo", "Welt"]
+let newWords = words.filter(word => word.length >= 5)
+console.log(newWords)
+
+// Step 3
+let otherNumbers: number[] = [2, 4, 6, 8, 10, 12]
+let sum = otherNumbers.reduce((a, b) => a + b)
+console.log(sum)
+
+// Step 4
+let anotherNumbers: number[] = [2, 4, 6, 8, 10, 12]
+let isSomeLarger10 = anotherNumbers.some(number => number > 10)
+console.log(isSomeLarger10)
 
