@@ -1,3 +1,5 @@
+import {Student} from "./Student.ts";
+
 console.log("Hallo Welt!")
 
 let age = 6;
@@ -54,14 +56,10 @@ type Person = {
 const y: Person = {
     name: "Max",
     favoriteColor: "blue",
-}
-const z: Person = {
-    name: "Linda",
-    favoriteColor: "blue",
-    age: 31
+    age: 30
 }
 console.log(y)
-console.log(z)
+
 
 //Typen definieren
 
@@ -179,3 +177,95 @@ const b3 = "Hallo"
 
 console.log(a3 || b3)
 
+console.log("---------------------------------")
+console.log("---------------------------------")
+console.log("------Typescript Part 3----------")
+console.log("---------------------------------")
+console.log("---------------------------------")
+
+const student1: Student = {
+    firstName: "Max",
+    lastName: "Wilmes",
+    age: 30,
+    reportCard: {
+        English: ["A", "A", "A", 2, 3, undefined],
+        Math: ["B", 1, 1],
+        Chemistry: ["A", "A", "B", undefined, 6]
+    }
+}
+const student2: Student = {
+    firstName: "Linda",
+    lastName: "Witte",
+    age: 31,
+    reportCard: {
+        English: ["A", 5, 6, 1, 3, undefined],
+        Math: ["B", undefined, 1, 1, undefined],
+        Chemistry: ["A", undefined, 4, "B", undefined, 6]
+    }
+}
+
+let studentArray: Student[] = [student1, student2]
+
+console.log(student1)
+
+function printStudent(student: Student) {
+    let numberOfCharacters: number = student.firstName.length + student.lastName.length + student.age.toString().length + 4
+
+    console.log(`${student.firstName} ${student.lastName} (${student.age})`)
+    console.log("=".repeat(numberOfCharacters))
+    console.log("Noten: ")
+
+    for (const subject in student.reportCard) {
+        let grades = student.reportCard[subject]
+            .map(grade => grade === undefined ? "*" : grade)
+
+        console.log(`${subject}: ${grades}`)
+    }
+    //Average Grades
+    let totalSum: number = 0
+    let totalCount: number = 0
+
+    console.log("=".repeat(numberOfCharacters))
+    for (const subject in student.reportCard) {
+        let sumOfGrades: number = student.reportCard[subject]
+            .filter(grade => grade !== undefined)
+            .map(grade => {
+                if (grade === "A") {
+                    return 1
+                }
+                if (grade === "B") {
+                    return 2
+                }
+                if (grade === "C") {
+                    return 3
+                }
+                if (grade === "D") {
+                    return 4
+                }
+                if (grade === "E") {
+                    return 5
+                }
+                if (grade === "F") {
+                    return 6
+                } else {
+                    return grade
+                }
+            })
+            .reduce((sum, number) => sum + number, 0)
+        let numberOfGrades: number = student.reportCard[subject]
+            .filter(grade => grade !== undefined)
+            .length
+        let averageGrade: number = sumOfGrades / numberOfGrades
+        console.log(`Average Grade ${subject}: ${averageGrade.toFixed(1)}`)
+
+        totalSum += sumOfGrades
+        totalCount += numberOfGrades
+    }
+
+    let overalAverage: number = totalSum / totalCount
+    console.log(`Overall Average Grade: ${overalAverage.toFixed(1)}`)
+}
+
+printStudent(student1)
+console.log("----------")
+studentArray.forEach(student => printStudent(student))
